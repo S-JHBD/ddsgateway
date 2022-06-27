@@ -17,6 +17,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->group(['middleware' => 'client.credentials'], function () use ($router) {
+
 $router->get('/users1', 'User1Controller@index');
 $router->post('/users1', 'User1Controller@add'); 
 $router->get('/users1/{id}', 'User1Controller@show');
@@ -30,3 +32,5 @@ $router->get('/users2/{id}', 'User2Controller@show');
 $router->put('/users2/{id}', 'User2Controller@update');
 $router->patch('/users2/{id}', 'User2Controller@update');
 $router->delete('/users2/{id}', 'User2Controller@delete');
+
+});
